@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import Icon from "@/components/ui/icon";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { toast } from "sonner";
 
 const Index = () => {
@@ -26,9 +26,35 @@ const Index = () => {
     element?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const [isVisible, setIsVisible] = useState(false);
+  const heroRef = useRef<HTMLDivElement>(null);
+  const advantagesRef = useRef<HTMLDivElement>(null);
+  const servicesRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    document.querySelectorAll('.animate-on-scroll').forEach((el) => {
+      observer.observe(el);
+    });
+
+    setIsVisible(true);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="min-h-screen bg-white">
-      <header className="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-border z-50">
+      <header className="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-border z-50 animate-fade-in-down">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <div className="w-10 h-10 bg-primary flex items-center justify-center">
@@ -62,22 +88,28 @@ const Index = () => {
         </div>
       </header>
 
-      <section className="pt-32 pb-20 px-4 bg-gradient-to-br from-primary via-primary to-secondary">
-        <div className="container mx-auto">
+      <section className="pt-32 pb-20 px-4 bg-gradient-to-br from-primary via-primary to-secondary relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-white rounded-full blur-3xl animate-float"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
+        </div>
+        <div className="container mx-auto relative z-10">
           <div className="max-w-4xl">
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight animate-fade-in-up">
               Комплексные строительно-монтажные работы
             </h1>
-            <p className="text-xl text-white/90 mb-8 leading-relaxed">
+            <p className="text-xl text-white/90 mb-8 leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
               Монтаж технологических трубопроводов • Металлоконструкции • Железобетонные конструкции • Земляные работы • Общестроительные работы
             </p>
             <Button 
               size="lg" 
-              className="bg-accent hover:bg-accent/90 text-white font-semibold px-8 py-6 text-lg"
+              className="bg-accent hover:bg-accent/90 text-white font-semibold px-8 py-6 text-lg animate-fade-in-up relative overflow-hidden group"
+              style={{ animationDelay: '0.4s' }}
               onClick={() => scrollToSection('contacts')}
             >
               Получить коммерческое предложение
-              <Icon name="ArrowRight" className="ml-2" size={20} />
+              <span className="absolute inset-0 bg-white/20 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out"></span>
+              <Icon name="ArrowRight" className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
             </Button>
           </div>
         </div>
@@ -85,9 +117,9 @@ const Index = () => {
 
       <section className="py-20 px-4 bg-muted/30">
         <div className="container mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Card className="p-6 hover:shadow-lg transition-shadow border-l-4 border-l-accent">
-              <div className="w-12 h-12 bg-accent/10 rounded flex items-center justify-center mb-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 animate-on-scroll opacity-0 transition-all duration-700" style={{ transitionDelay: '0.1s' }}>
+            <Card className="p-6 hover:shadow-lg hover:-translate-y-2 transition-all duration-300 border-l-4 border-l-accent group">
+              <div className="w-12 h-12 bg-accent/10 rounded flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-accent/20 transition-all duration-300">
                 <Icon name="Award" size={24} className="text-accent" />
               </div>
               <h3 className="font-bold text-lg mb-2">Аттестованный персонал</h3>
@@ -96,8 +128,8 @@ const Index = () => {
               </p>
             </Card>
 
-            <Card className="p-6 hover:shadow-lg transition-shadow border-l-4 border-l-accent">
-              <div className="w-12 h-12 bg-accent/10 rounded flex items-center justify-center mb-4">
+            <Card className="p-6 hover:shadow-lg hover:-translate-y-2 transition-all duration-300 border-l-4 border-l-accent group">
+              <div className="w-12 h-12 bg-accent/10 rounded flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-accent/20 transition-all duration-300">
                 <Icon name="Construction" size={24} className="text-accent" />
               </div>
               <h3 className="font-bold text-lg mb-2">Опыт прокладки коммуникаций</h3>
@@ -106,8 +138,8 @@ const Index = () => {
               </p>
             </Card>
 
-            <Card className="p-6 hover:shadow-lg transition-shadow border-l-4 border-l-accent">
-              <div className="w-12 h-12 bg-accent/10 rounded flex items-center justify-center mb-4">
+            <Card className="p-6 hover:shadow-lg hover:-translate-y-2 transition-all duration-300 border-l-4 border-l-accent group">
+              <div className="w-12 h-12 bg-accent/10 rounded flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-accent/20 transition-all duration-300">
                 <Icon name="Shield" size={24} className="text-accent" />
               </div>
               <h3 className="font-bold text-lg mb-2">Работа с опасными средами</h3>
@@ -116,8 +148,8 @@ const Index = () => {
               </p>
             </Card>
 
-            <Card className="p-6 hover:shadow-lg transition-shadow border-l-4 border-l-accent">
-              <div className="w-12 h-12 bg-accent/10 rounded flex items-center justify-center mb-4">
+            <Card className="p-6 hover:shadow-lg hover:-translate-y-2 transition-all duration-300 border-l-4 border-l-accent group">
+              <div className="w-12 h-12 bg-accent/10 rounded flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-accent/20 transition-all duration-300">
                 <Icon name="Layers" size={24} className="text-accent" />
               </div>
               <h3 className="font-bold text-lg mb-2">Полный цикл работ</h3>
@@ -131,57 +163,62 @@ const Index = () => {
 
       <section id="services" className="py-20 px-4">
         <div className="container mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-4">Наши услуги</h2>
-          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-4 animate-on-scroll opacity-0 transition-all duration-700">Наши услуги</h2>
+          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto animate-on-scroll opacity-0 transition-all duration-700" style={{ transitionDelay: '0.1s' }}>
             Выполняем полный комплекс строительно-монтажных работ для промышленных объектов
           </p>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <Card className="p-8 hover:shadow-xl transition-all hover:border-accent">
-              <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 animate-on-scroll opacity-0 transition-all duration-700" style={{ transitionDelay: '0.2s' }}>
+            <Card className="p-8 hover:shadow-xl transition-all duration-500 hover:border-accent hover:-translate-y-2 group relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-full -translate-y-16 translate-x-16 group-hover:scale-150 transition-transform duration-500"></div>
+              <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6 relative z-10 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-300">
                 <Icon name="Gauge" size={32} className="text-primary" />
               </div>
-              <h3 className="text-xl font-bold mb-4">Монтаж технологических трубопроводов</h3>
+              <h3 className="text-xl font-bold mb-4 relative z-10">Монтаж технологических трубопроводов</h3>
               <p className="text-muted-foreground leading-relaxed">
                 Монтаж стальных и ПНД трубопроводов Ду25–1200 мм, включая транспортировку взрывоопасных, ядовитых и горючих веществ. Полное соблюдение норм безопасности и требований ГОСТ.
               </p>
             </Card>
 
-            <Card className="p-8 hover:shadow-xl transition-all hover:border-accent">
-              <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+            <Card className="p-8 hover:shadow-xl transition-all duration-500 hover:border-accent hover:-translate-y-2 group relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-full -translate-y-16 translate-x-16 group-hover:scale-150 transition-transform duration-500"></div>
+              <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6 relative z-10 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-300">
                 <Icon name="Grid3x3" size={32} className="text-primary" />
               </div>
-              <h3 className="text-xl font-bold mb-4">Монтаж металлоконструкций</h3>
+              <h3 className="text-xl font-bold mb-4 relative z-10">Монтаж металлоконструкций</h3>
               <p className="text-muted-foreground leading-relaxed">
                 Изготовление и монтаж металлоконструкций любой сложности для промышленных объектов. Сварочные работы, антикоррозийная обработка, контроль качества на всех этапах.
               </p>
             </Card>
 
-            <Card className="p-8 hover:shadow-xl transition-all hover:border-accent">
-              <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+            <Card className="p-8 hover:shadow-xl transition-all duration-500 hover:border-accent hover:-translate-y-2 group relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-full -translate-y-16 translate-x-16 group-hover:scale-150 transition-transform duration-500"></div>
+              <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6 relative z-10 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-300">
                 <Icon name="Building2" size={32} className="text-primary" />
               </div>
-              <h3 className="text-xl font-bold mb-4">Монтаж железобетонных конструкций</h3>
+              <h3 className="text-xl font-bold mb-4 relative z-10">Монтаж железобетонных конструкций</h3>
               <p className="text-muted-foreground leading-relaxed">
                 Установка фундаментов, перекрытий, колонн и других ЖБ элементов. Использование современного подъёмного оборудования и соблюдение технологии монтажа.
               </p>
             </Card>
 
-            <Card className="p-8 hover:shadow-xl transition-all hover:border-accent">
-              <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+            <Card className="p-8 hover:shadow-xl transition-all duration-500 hover:border-accent hover:-translate-y-2 group relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-full -translate-y-16 translate-x-16 group-hover:scale-150 transition-transform duration-500"></div>
+              <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6 relative z-10 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-300">
                 <Icon name="Shovel" size={32} className="text-primary" />
               </div>
-              <h3 className="text-xl font-bold mb-4">Земляные работы</h3>
-              <p className="text-muted-foreground leading-relaxed">
+              <h3 className="text-xl font-bold mb-4 relative z-10">Земляные работы</h3>
+              <p className="text-muted-foreground leading-relaxed relative z-10">
                 Выемка и перемещение грунта, планировка территории, прокладка подземных коммуникаций. Собственный парк спецтехники и опытные машинисты.
               </p>
             </Card>
 
-            <Card className="p-8 hover:shadow-xl transition-all hover:border-accent">
-              <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+            <Card className="p-8 hover:shadow-xl transition-all duration-500 hover:border-accent hover:-translate-y-2 group relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-full -translate-y-16 translate-x-16 group-hover:scale-150 transition-transform duration-500"></div>
+              <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6 relative z-10 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-300">
                 <Icon name="HardHat" size={32} className="text-primary" />
               </div>
-              <h3 className="text-xl font-bold mb-4">Общестроительные работы</h3>
+              <h3 className="text-xl font-bold mb-4 relative z-10">Общестроительные работы</h3>
               <p className="text-muted-foreground leading-relaxed">
                 Полный спектр строительных работ: возведение зданий, кладочные работы, устройство кровли, внутренняя и наружная отделка промышленных объектов.
               </p>
@@ -193,9 +230,9 @@ const Index = () => {
       <section id="about" className="py-20 px-4 bg-muted/30">
         <div className="container mx-auto">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold mb-8">О компании</h2>
+            <h2 className="text-4xl font-bold mb-8 animate-on-scroll opacity-0 transition-all duration-700">О компании</h2>
             
-            <div className="prose prose-lg max-w-none space-y-6 text-foreground">
+            <div className="prose prose-lg max-w-none space-y-6 text-foreground animate-on-scroll opacity-0 transition-all duration-700" style={{ transitionDelay: '0.1s' }}>
               <p className="leading-relaxed">
                 ИСК-СТР — компания, специализирующаяся на комплексных строительно-монтажных работах для промышленных объектов. Мы используем современные материалы и оборудование при монтаже, изготовлении узлов с применением как стальных, так и полиэтиленовых трубопроводов различных диаметров диапазоном от 25 до 1200 мм.
               </p>
