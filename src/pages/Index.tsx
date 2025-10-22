@@ -174,59 +174,104 @@ const Index = () => {
           </p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 animate-on-scroll opacity-0 transition-all duration-700" style={{ transitionDelay: '0.2s' }}>
-            <Card className="p-8 hover:shadow-xl transition-all duration-500 hover:border-accent hover:-translate-y-2 group relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-full -translate-y-16 translate-x-16 group-hover:scale-150 transition-transform duration-500"></div>
-              <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6 relative z-10 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-300">
-                <Icon name="Gauge" size={32} className="text-primary" />
+            <Card className="p-0 hover:shadow-xl transition-all duration-500 hover:border-accent hover:-translate-y-2 group relative overflow-hidden">
+              <div className="relative h-48 overflow-hidden">
+                <img 
+                  src="https://cdn.poehali.dev/projects/9904a683-686d-4561-9edc-49b801b00e0e/files/a8163113-1f50-4d0d-a7ae-0430d19991dc.jpg" 
+                  alt="Монтаж трубопроводов"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div className="absolute bottom-4 left-4 w-12 h-12 bg-white/90 rounded-lg flex items-center justify-center">
+                  <Icon name="Gauge" size={28} className="text-primary" />
+                </div>
               </div>
-              <h3 className="text-xl font-bold mb-4 relative z-10">Монтаж технологических трубопроводов</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                Монтаж стальных и ПНД трубопроводов Ду25–1200 мм, включая транспортировку взрывоопасных, ядовитых и горючих веществ. Полное соблюдение норм безопасности и требований ГОСТ.
-              </p>
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-3">Монтаж технологических трубопроводов</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Монтаж стальных и ПНД трубопроводов Ду25–1200 мм, включая транспортировку взрывоопасных, ядовитых и горючих веществ. Полное соблюдение норм безопасности и требований ГОСТ.
+                </p>
+              </div>
             </Card>
 
-            <Card className="p-8 hover:shadow-xl transition-all duration-500 hover:border-accent hover:-translate-y-2 group relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-full -translate-y-16 translate-x-16 group-hover:scale-150 transition-transform duration-500"></div>
-              <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6 relative z-10 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-300">
-                <Icon name="Grid3x3" size={32} className="text-primary" />
+            <Card className="p-0 hover:shadow-xl transition-all duration-500 hover:border-accent hover:-translate-y-2 group relative overflow-hidden">
+              <div className="relative h-48 overflow-hidden">
+                <img 
+                  src="https://cdn.poehali.dev/projects/9904a683-686d-4561-9edc-49b801b00e0e/files/4edbd683-1238-4924-86b6-bb3411b858c2.jpg" 
+                  alt="Монтаж металлоконструкций"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div className="absolute bottom-4 left-4 w-12 h-12 bg-white/90 rounded-lg flex items-center justify-center">
+                  <Icon name="Grid3x3" size={28} className="text-primary" />
+                </div>
               </div>
-              <h3 className="text-xl font-bold mb-4 relative z-10">Монтаж металлоконструкций</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                Изготовление и монтаж металлоконструкций любой сложности для промышленных объектов. Сварочные работы, антикоррозийная обработка, контроль качества на всех этапах.
-              </p>
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-3">Монтаж металлоконструкций</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Изготовление и монтаж металлоконструкций любой сложности для промышленных объектов. Сварочные работы, антикоррозийная обработка, контроль качества на всех этапах.
+                </p>
+              </div>
             </Card>
 
-            <Card className="p-8 hover:shadow-xl transition-all duration-500 hover:border-accent hover:-translate-y-2 group relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-full -translate-y-16 translate-x-16 group-hover:scale-150 transition-transform duration-500"></div>
-              <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6 relative z-10 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-300">
-                <Icon name="Building2" size={32} className="text-primary" />
+            <Card className="p-0 hover:shadow-xl transition-all duration-500 hover:border-accent hover:-translate-y-2 group relative overflow-hidden">
+              <div className="relative h-48 overflow-hidden">
+                <img 
+                  src="https://cdn.poehali.dev/projects/9904a683-686d-4561-9edc-49b801b00e0e/files/cd535f40-02ac-42dc-94c8-8a05eb4c867e.jpg" 
+                  alt="Монтаж железобетонных конструкций"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div className="absolute bottom-4 left-4 w-12 h-12 bg-white/90 rounded-lg flex items-center justify-center">
+                  <Icon name="Building2" size={28} className="text-primary" />
+                </div>
               </div>
-              <h3 className="text-xl font-bold mb-4 relative z-10">Монтаж железобетонных конструкций</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                Установка фундаментов, перекрытий, колонн и других ЖБ элементов. Использование современного подъёмного оборудования и соблюдение технологии монтажа.
-              </p>
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-3">Монтаж железобетонных конструкций</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Установка фундаментов, перекрытий, колонн и других ЖБ элементов. Использование современного подъёмного оборудования и соблюдение технологии монтажа.
+                </p>
+              </div>
             </Card>
 
-            <Card className="p-8 hover:shadow-xl transition-all duration-500 hover:border-accent hover:-translate-y-2 group relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-full -translate-y-16 translate-x-16 group-hover:scale-150 transition-transform duration-500"></div>
-              <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6 relative z-10 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-300">
-                <Icon name="Shovel" size={32} className="text-primary" />
+            <Card className="p-0 hover:shadow-xl transition-all duration-500 hover:border-accent hover:-translate-y-2 group relative overflow-hidden">
+              <div className="relative h-48 overflow-hidden">
+                <img 
+                  src="https://cdn.poehali.dev/projects/9904a683-686d-4561-9edc-49b801b00e0e/files/c6f66008-90cf-4967-bd5b-931439b60ae7.jpg" 
+                  alt="Земляные работы"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div className="absolute bottom-4 left-4 w-12 h-12 bg-white/90 rounded-lg flex items-center justify-center">
+                  <Icon name="Shovel" size={28} className="text-primary" />
+                </div>
               </div>
-              <h3 className="text-xl font-bold mb-4 relative z-10">Земляные работы</h3>
-              <p className="text-muted-foreground leading-relaxed relative z-10">
-                Выемка и перемещение грунта, планировка территории, прокладка подземных коммуникаций. Собственный парк спецтехники и опытные машинисты.
-              </p>
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-3">Земляные работы</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Выемка и перемещение грунта, планировка территории, прокладка подземных коммуникаций. Собственный парк спецтехники и опытные машинисты.
+                </p>
+              </div>
             </Card>
 
-            <Card className="p-8 hover:shadow-xl transition-all duration-500 hover:border-accent hover:-translate-y-2 group relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-full -translate-y-16 translate-x-16 group-hover:scale-150 transition-transform duration-500"></div>
-              <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6 relative z-10 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-300">
-                <Icon name="HardHat" size={32} className="text-primary" />
+            <Card className="p-0 hover:shadow-xl transition-all duration-500 hover:border-accent hover:-translate-y-2 group relative overflow-hidden">
+              <div className="relative h-48 overflow-hidden">
+                <img 
+                  src="https://cdn.poehali.dev/projects/9904a683-686d-4561-9edc-49b801b00e0e/files/6e04386c-806b-40be-96de-87940df29aed.jpg" 
+                  alt="Общестроительные работы"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div className="absolute bottom-4 left-4 w-12 h-12 bg-white/90 rounded-lg flex items-center justify-center">
+                  <Icon name="HardHat" size={28} className="text-primary" />
+                </div>
               </div>
-              <h3 className="text-xl font-bold mb-4 relative z-10">Общестроительные работы</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                Полный спектр строительных работ: возведение зданий, кладочные работы, устройство кровли, внутренняя и наружная отделка промышленных объектов.
-              </p>
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-3">Общестроительные работы</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Полный спектр строительных работ: возведение зданий, кладочные работы, устройство кровли, внутренняя и наружная отделка промышленных объектов.
+                </p>
+              </div>
             </Card>
           </div>
         </div>
@@ -318,6 +363,119 @@ const Index = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 px-4 bg-white">
+        <div className="container mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4 animate-on-scroll opacity-0 transition-all duration-700">Наша команда</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto animate-on-scroll opacity-0 transition-all duration-700" style={{ transitionDelay: '0.1s' }}>
+              Профессионалы с многолетним опытом в промышленном строительстве
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto animate-on-scroll opacity-0 transition-all duration-700" style={{ transitionDelay: '0.2s' }}>
+            <Card className="text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group overflow-hidden">
+              <div className="relative">
+                <div className="w-full h-64 bg-gradient-to-br from-primary to-secondary flex items-center justify-center relative overflow-hidden">
+                  <div className="absolute inset-0 bg-primary/20 group-hover:scale-110 transition-transform duration-500"></div>
+                  <Icon name="User" size={80} className="text-white relative z-10" />
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/60 to-transparent"></div>
+              </div>
+              <div className="p-6">
+                <h3 className="font-bold text-xl mb-1">Генеральный директор</h3>
+                <p className="text-accent font-semibold mb-3">Руководство компанией</p>
+                <p className="text-sm text-muted-foreground">
+                  Стратегическое планирование, управление проектами, развитие бизнеса
+                </p>
+              </div>
+            </Card>
+
+            <Card className="text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group overflow-hidden">
+              <div className="relative">
+                <div className="w-full h-64 bg-gradient-to-br from-accent/80 to-accent flex items-center justify-center relative overflow-hidden">
+                  <div className="absolute inset-0 bg-accent/20 group-hover:scale-110 transition-transform duration-500"></div>
+                  <Icon name="Briefcase" size={80} className="text-white relative z-10" />
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/60 to-transparent"></div>
+              </div>
+              <div className="p-6">
+                <h3 className="font-bold text-xl mb-1">Главный инженер</h3>
+                <p className="text-accent font-semibold mb-3">Технический надзор</p>
+                <p className="text-sm text-muted-foreground">
+                  Контроль качества работ, техническая документация, соблюдение норм
+                </p>
+              </div>
+            </Card>
+
+            <Card className="text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group overflow-hidden">
+              <div className="relative">
+                <div className="w-full h-64 bg-gradient-to-br from-secondary to-primary flex items-center justify-center relative overflow-hidden">
+                  <div className="absolute inset-0 bg-secondary/20 group-hover:scale-110 transition-transform duration-500"></div>
+                  <Icon name="Calculator" size={80} className="text-white relative z-10" />
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/60 to-transparent"></div>
+              </div>
+              <div className="p-6">
+                <h3 className="font-bold text-xl mb-1">Главный бухгалтер</h3>
+                <p className="text-accent font-semibold mb-3">Финансовый учёт</p>
+                <p className="text-sm text-muted-foreground">
+                  Бухгалтерский учёт, финансовая отчётность, налоговое планирование
+                </p>
+              </div>
+            </Card>
+
+            <Card className="text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group overflow-hidden">
+              <div className="relative">
+                <div className="w-full h-64 bg-gradient-to-br from-primary/70 to-accent/70 flex items-center justify-center relative overflow-hidden">
+                  <div className="absolute inset-0 bg-primary/20 group-hover:scale-110 transition-transform duration-500"></div>
+                  <Icon name="ClipboardList" size={80} className="text-white relative z-10" />
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/60 to-transparent"></div>
+              </div>
+              <div className="p-6">
+                <h3 className="font-bold text-xl mb-1">Начальник отдела снабжения</h3>
+                <p className="text-accent font-semibold mb-3">Логистика</p>
+                <p className="text-sm text-muted-foreground">
+                  Закупка материалов, взаимодействие с поставщиками, контроль поставок
+                </p>
+              </div>
+            </Card>
+          </div>
+
+          <div className="mt-16 max-w-4xl mx-auto">
+            <Card className="p-8 bg-gradient-to-br from-primary/5 to-accent/5 border-2 border-primary/10">
+              <div className="flex items-start space-x-4">
+                <div className="p-4 bg-accent/10 rounded-lg">
+                  <Icon name="Users" size={40} className="text-accent" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-2xl mb-3">Присоединяйтесь к нашей команде</h3>
+                  <p className="text-muted-foreground leading-relaxed mb-4">
+                    Мы постоянно ищем талантливых специалистов: прорабов, мастеров участков, инженеров ПТО, 
+                    сварщиков, монтажников, машинистов спецтехники. Предлагаем достойную заработную плату, 
+                    официальное трудоустройство и возможность профессионального роста.
+                  </p>
+                  <div className="flex flex-wrap gap-3">
+                    <div className="flex items-center space-x-2 text-sm">
+                      <Icon name="Check" size={16} className="text-accent" />
+                      <span>Официальное трудоустройство</span>
+                    </div>
+                    <div className="flex items-center space-x-2 text-sm">
+                      <Icon name="Check" size={16} className="text-accent" />
+                      <span>Достойная оплата</span>
+                    </div>
+                    <div className="flex items-center space-x-2 text-sm">
+                      <Icon name="Check" size={16} className="text-accent" />
+                      <span>Карьерный рост</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Card>
           </div>
         </div>
       </section>
