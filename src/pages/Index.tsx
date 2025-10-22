@@ -623,64 +623,78 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="py-20 px-4 bg-muted/30">
-        <div className="container mx-auto">
+      <section className="py-20 px-4 bg-gradient-to-br from-muted/30 to-muted/10 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+        
+        <div className="container mx-auto relative z-10">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4 animate-on-scroll opacity-0 transition-all duration-700">Наши партнёры</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto animate-on-scroll opacity-0 transition-all duration-700" style={{ transitionDelay: '0.1s' }}>
-              Работаем с ведущими поставщиками и производителями
+              Работаем с ведущими поставщиками и производителями строительных материалов и оборудования
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 max-w-5xl mx-auto animate-on-scroll opacity-0 transition-all duration-700" style={{ transitionDelay: '0.2s' }}>
-            <Card className="p-6 flex items-center justify-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group bg-white">
-              <div className="text-center">
-                <div className="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
-                  <Icon name="Factory" size={32} className="text-primary" />
+          <div className="relative overflow-hidden py-8">
+            <div className="flex space-x-8 animate-marquee">
+              {[...Array(2)].map((_, setIndex) => (
+                <div key={setIndex} className="flex space-x-8 shrink-0">
+                  <Card className="p-8 flex items-center justify-center bg-white hover:shadow-xl transition-all duration-300 hover:scale-105 group min-w-[280px] h-40">
+                    <img 
+                      src="https://cdn.poehali.dev/projects/9904a683-686d-4561-9edc-49b801b00e0e/files/f50062e9-751f-4bb3-9ce0-b218dd185f6b.jpg"
+                      alt="MetalStroy"
+                      className="w-full h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                    />
+                  </Card>
+
+                  <Card className="p-8 flex items-center justify-center bg-white hover:shadow-xl transition-all duration-300 hover:scale-105 group min-w-[280px] h-40">
+                    <img 
+                      src="https://cdn.poehali.dev/projects/9904a683-686d-4561-9edc-49b801b00e0e/files/1f1cd42b-f229-44be-b26f-1af406252f76.jpg"
+                      alt="UralProm"
+                      className="w-full h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                    />
+                  </Card>
+
+                  <Card className="p-8 flex items-center justify-center bg-white hover:shadow-xl transition-all duration-300 hover:scale-105 group min-w-[280px] h-40">
+                    <img 
+                      src="https://cdn.poehali.dev/projects/9904a683-686d-4561-9edc-49b801b00e0e/files/626a6068-0e4d-4532-bc8d-1a4e62df88db.jpg"
+                      alt="TechSteel"
+                      className="w-full h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                    />
+                  </Card>
+
+                  <Card className="p-8 flex items-center justify-center bg-white hover:shadow-xl transition-all duration-300 hover:scale-105 group min-w-[280px] h-40">
+                    <img 
+                      src="https://cdn.poehali.dev/projects/9904a683-686d-4561-9edc-49b801b00e0e/files/2c0b05e5-2592-4b7e-a2e2-41c81ebd41d8.jpg"
+                      alt="StroyKomplekt"
+                      className="w-full h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                    />
+                  </Card>
+
+                  <Card className="p-8 flex items-center justify-center bg-white hover:shadow-xl transition-all duration-300 hover:scale-105 group min-w-[280px] h-40">
+                    <img 
+                      src="https://cdn.poehali.dev/projects/9904a683-686d-4561-9edc-49b801b00e0e/files/ea1a8e10-6fda-4e64-9cb6-ef0857d78390.jpg"
+                      alt="Zavod-Montazh"
+                      className="w-full h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                    />
+                  </Card>
+
+                  <Card className="p-8 flex items-center justify-center bg-white hover:shadow-xl transition-all duration-300 hover:scale-105 group min-w-[280px] h-40">
+                    <img 
+                      src="https://cdn.poehali.dev/projects/9904a683-686d-4561-9edc-49b801b00e0e/files/4eb973ed-c235-4651-89b8-6fabac768135.jpg"
+                      alt="BashIndustry"
+                      className="w-full h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                    />
+                  </Card>
                 </div>
-                <p className="text-xs font-semibold">Северсталь</p>
-              </div>
-            </Card>
-            <Card className="p-6 flex items-center justify-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group bg-white">
-              <div className="text-center">
-                <div className="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
-                  <Icon name="Package" size={32} className="text-primary" />
-                </div>
-                <p className="text-xs font-semibold">ТМК</p>
-              </div>
-            </Card>
-            <Card className="p-6 flex items-center justify-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group bg-white">
-              <div className="text-center">
-                <div className="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
-                  <Icon name="Boxes" size={32} className="text-primary" />
-                </div>
-                <p className="text-xs font-semibold">ЧТПЗ</p>
-              </div>
-            </Card>
-            <Card className="p-6 flex items-center justify-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group bg-white">
-              <div className="text-center">
-                <div className="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
-                  <Icon name="Hammer" size={32} className="text-primary" />
-                </div>
-                <p className="text-xs font-semibold">УЗТМ</p>
-              </div>
-            </Card>
-            <Card className="p-6 flex items-center justify-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group bg-white">
-              <div className="text-center">
-                <div className="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
-                  <Icon name="Wrench" size={32} className="text-primary" />
-                </div>
-                <p className="text-xs font-semibold">Уралмаш</p>
-              </div>
-            </Card>
-            <Card className="p-6 flex items-center justify-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group bg-white">
-              <div className="text-center">
-                <div className="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
-                  <Icon name="Truck" size={32} className="text-primary" />
-                </div>
-                <p className="text-xs font-semibold">Камаз</p>
-              </div>
-            </Card>
+              ))}
+            </div>
+          </div>
+
+          <div className="text-center mt-8">
+            <p className="text-sm text-muted-foreground">
+              И более 50 других надёжных партнёров по всей России
+            </p>
           </div>
         </div>
       </section>
