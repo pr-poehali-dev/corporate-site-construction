@@ -27,6 +27,9 @@ const Index = () => {
   };
 
   const [isVisible, setIsVisible] = useState(false);
+  const [counters, setCounters] = useState({ projects: 0, years: 0, employees: 0 });
+  const [hasCountedUp, setHasCountedUp] = useState(false);
+  const countersRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
   const advantagesRef = useRef<HTMLDivElement>(null);
   const servicesRef = useRef<HTMLDivElement>(null);
@@ -37,6 +40,11 @@ const Index = () => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('animate-in');
+            
+            if (entry.target === countersRef.current && !hasCountedUp) {
+              setHasCountedUp(true);
+              animateCounters();
+            }
           }
         });
       },
@@ -47,10 +55,39 @@ const Index = () => {
       observer.observe(el);
     });
 
+    if (countersRef.current) {
+      observer.observe(countersRef.current);
+    }
+
     setIsVisible(true);
 
     return () => observer.disconnect();
-  }, []);
+  }, [hasCountedUp]);
+
+  const animateCounters = () => {
+    const duration = 2000;
+    const steps = 60;
+    const interval = duration / steps;
+    
+    const targets = { projects: 150, years: 7, employees: 85 };
+    let currentStep = 0;
+
+    const timer = setInterval(() => {
+      currentStep++;
+      const progress = currentStep / steps;
+      
+      setCounters({
+        projects: Math.floor(targets.projects * progress),
+        years: Math.floor(targets.years * progress),
+        employees: Math.floor(targets.employees * progress)
+      });
+
+      if (currentStep >= steps) {
+        setCounters(targets);
+        clearInterval(timer);
+      }
+    }, interval);
+  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -166,6 +203,38 @@ const Index = () => {
         </div>
       </section>
 
+      <section ref={countersRef} className="py-20 px-4 bg-gradient-to-br from-primary to-secondary text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 left-20 w-64 h-64 bg-white rounded-full blur-3xl"></div>
+          <div className="absolute bottom-10 right-20 w-96 h-96 bg-accent rounded-full blur-3xl"></div>
+        </div>
+        <div className="container mx-auto relative z-10">
+          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            <div className="text-center">
+              <div className="mb-4">
+                <Icon name="Briefcase" size={48} className="mx-auto text-accent" />
+              </div>
+              <div className="text-5xl font-bold mb-2">{counters.projects}+</div>
+              <div className="text-xl text-white/80">Реализованных проектов</div>
+            </div>
+            <div className="text-center">
+              <div className="mb-4">
+                <Icon name="Calendar" size={48} className="mx-auto text-accent" />
+              </div>
+              <div className="text-5xl font-bold mb-2">{counters.years}</div>
+              <div className="text-xl text-white/80">Лет на рынке</div>
+            </div>
+            <div className="text-center">
+              <div className="mb-4">
+                <Icon name="Users" size={48} className="mx-auto text-accent" />
+              </div>
+              <div className="text-5xl font-bold mb-2">{counters.employees}+</div>
+              <div className="text-xl text-white/80">Квалифицированных сотрудников</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="services" className="py-20 px-4">
         <div className="container mx-auto">
           <h2 className="text-4xl font-bold text-center mb-4 animate-on-scroll opacity-0 transition-all duration-700">Наши услуги</h2>
@@ -277,7 +346,132 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="about" className="py-20 px-4 bg-muted/30 relative overflow-hidden">
+      <section className="py-20 px-4 bg-muted/30">
+        <div className="container mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-4 animate-on-scroll opacity-0 transition-all duration-700">Реализованные проекты</h2>
+          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto animate-on-scroll opacity-0 transition-all duration-700" style={{ transitionDelay: '0.1s' }}>
+            Примеры наших успешно завершённых объектов
+          </p>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 animate-on-scroll opacity-0 transition-all duration-700" style={{ transitionDelay: '0.2s' }}>
+            <Card className="overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group">
+              <div className="relative h-64 overflow-hidden">
+                <img 
+                  src="https://cdn.poehali.dev/projects/9904a683-686d-4561-9edc-49b801b00e0e/files/50ec055d-ad32-46fe-81d0-2ae7ac2263c6.jpg" 
+                  alt="Промышленный комплекс"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                <div className="absolute bottom-4 left-4 right-4">
+                  <h3 className="text-white font-bold text-xl mb-1">Промышленный комплекс "Урал"</h3>
+                  <p className="text-white/80 text-sm">2023 год</p>
+                </div>
+              </div>
+              <div className="p-6">
+                <div className="grid grid-cols-2 gap-4 mb-4 text-sm">
+                  <div>
+                    <div className="text-muted-foreground mb-1">Сроки</div>
+                    <div className="font-semibold">8 месяцев</div>
+                  </div>
+                  <div>
+                    <div className="text-muted-foreground mb-1">Площадь</div>
+                    <div className="font-semibold">12 500 м²</div>
+                  </div>
+                </div>
+                <p className="text-muted-foreground text-sm mb-4">
+                  Монтаж металлоконструкций, устройство технологических трубопроводов, 
+                  общестроительные работы.
+                </p>
+                <div className="flex items-start space-x-2 bg-accent/5 p-3 rounded-lg">
+                  <Icon name="Quote" size={20} className="text-accent flex-shrink-0 mt-1" />
+                  <p className="text-sm italic">
+                    "Работы выполнены качественно и в срок. Рекомендуем как надёжного подрядчика."
+                  </p>
+                </div>
+                <p className="text-xs text-muted-foreground mt-2">— ООО "УралПром"</p>
+              </div>
+            </Card>
+
+            <Card className="overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group">
+              <div className="relative h-64 overflow-hidden">
+                <img 
+                  src="https://cdn.poehali.dev/projects/9904a683-686d-4561-9edc-49b801b00e0e/files/02baf658-6fc0-4a36-998c-b5c0c65779a1.jpg" 
+                  alt="Система трубопроводов"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                <div className="absolute bottom-4 left-4 right-4">
+                  <h3 className="text-white font-bold text-xl mb-1">Трубопроводная система ХПЗ</h3>
+                  <p className="text-white/80 text-sm">2022 год</p>
+                </div>
+              </div>
+              <div className="p-6">
+                <div className="grid grid-cols-2 gap-4 mb-4 text-sm">
+                  <div>
+                    <div className="text-muted-foreground mb-1">Сроки</div>
+                    <div className="font-semibold">6 месяцев</div>
+                  </div>
+                  <div>
+                    <div className="text-muted-foreground mb-1">Протяжённость</div>
+                    <div className="font-semibold">3 200 м</div>
+                  </div>
+                </div>
+                <p className="text-muted-foreground text-sm mb-4">
+                  Монтаж технологических трубопроводов Ду400-800, сварочные работы, 
+                  испытания на прочность и герметичность.
+                </p>
+                <div className="flex items-start space-x-2 bg-accent/5 p-3 rounded-lg">
+                  <Icon name="Quote" size={20} className="text-accent flex-shrink-0 mt-1" />
+                  <p className="text-sm italic">
+                    "Высокий профессионализм команды. Все работы выполнены с соблюдением норм безопасности."
+                  </p>
+                </div>
+                <p className="text-xs text-muted-foreground mt-2">— АО "Химпром"</p>
+              </div>
+            </Card>
+
+            <Card className="overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group">
+              <div className="relative h-64 overflow-hidden">
+                <img 
+                  src="https://cdn.poehali.dev/projects/9904a683-686d-4561-9edc-49b801b00e0e/files/036ee138-1035-4ca8-b4d8-b91c9b292667.jpg" 
+                  alt="Логистический центр"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                <div className="absolute bottom-4 left-4 right-4">
+                  <h3 className="text-white font-bold text-xl mb-1">Логистический центр</h3>
+                  <p className="text-white/80 text-sm">2024 год</p>
+                </div>
+              </div>
+              <div className="p-6">
+                <div className="grid grid-cols-2 gap-4 mb-4 text-sm">
+                  <div>
+                    <div className="text-muted-foreground mb-1">Сроки</div>
+                    <div className="font-semibold">10 месяцев</div>
+                  </div>
+                  <div>
+                    <div className="text-muted-foreground mb-1">Площадь</div>
+                    <div className="font-semibold">18 000 м²</div>
+                  </div>
+                </div>
+                <p className="text-muted-foreground text-sm mb-4">
+                  Полный цикл работ: земляные работы, монтаж ЖБК и металлоконструкций, 
+                  кровельные и фасадные работы.
+                </p>
+                <div className="flex items-start space-x-2 bg-accent/5 p-3 rounded-lg">
+                  <Icon name="Quote" size={20} className="text-accent flex-shrink-0 mt-1" />
+                  <p className="text-sm italic">
+                    "Объект сдан досрочно. Отличная организация работ и контроль качества."
+                  </p>
+                </div>
+                <p className="text-xs text-muted-foreground mt-2">— ГК "Логистика+"</p>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" className="py-20 px-4 bg-white relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl"></div>
         <div className="container mx-auto relative z-10">
           <div className="max-w-4xl mx-auto">
@@ -349,6 +543,42 @@ const Index = () => {
                 </div>
               </Card>
 
+              <div className="mt-12">
+                <h3 className="font-bold text-2xl mb-6 flex items-center">
+                  <Icon name="FileCheck" size={28} className="mr-3 text-accent" />
+                  Лицензии и сертификаты
+                </h3>
+                <div className="grid md:grid-cols-3 gap-6">
+                  <Card className="p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group border-2 border-accent/20">
+                    <div className="w-16 h-16 mx-auto bg-accent/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                      <Icon name="Shield" size={32} className="text-accent" />
+                    </div>
+                    <h4 className="font-bold text-center mb-2">СРО</h4>
+                    <p className="text-sm text-muted-foreground text-center">
+                      Член саморегулируемой организации в области строительства
+                    </p>
+                  </Card>
+                  <Card className="p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group border-2 border-accent/20">
+                    <div className="w-16 h-16 mx-auto bg-accent/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                      <Icon name="Award" size={32} className="text-accent" />
+                    </div>
+                    <h4 className="font-bold text-center mb-2">ISO 9001</h4>
+                    <p className="text-sm text-muted-foreground text-center">
+                      Сертификат системы менеджмента качества
+                    </p>
+                  </Card>
+                  <Card className="p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group border-2 border-accent/20">
+                    <div className="w-16 h-16 mx-auto bg-accent/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                      <Icon name="FileCheck" size={32} className="text-accent" />
+                    </div>
+                    <h4 className="font-bold text-center mb-2">Допуски</h4>
+                    <p className="text-sm text-muted-foreground text-center">
+                      Допуски на работы повышенной опасности
+                    </p>
+                  </Card>
+                </div>
+              </div>
+
               <div className="bg-white p-8 rounded-lg border-2 border-primary/20 mt-8 hover:shadow-xl transition-shadow duration-300">
                 <h3 className="font-bold text-2xl mb-6 text-primary flex items-center">
                   <Icon name="Building2" size={28} className="mr-3" />
@@ -363,6 +593,68 @@ const Index = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 px-4 bg-muted/30">
+        <div className="container mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4 animate-on-scroll opacity-0 transition-all duration-700">Наши партнёры</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto animate-on-scroll opacity-0 transition-all duration-700" style={{ transitionDelay: '0.1s' }}>
+              Работаем с ведущими поставщиками и производителями
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 max-w-5xl mx-auto animate-on-scroll opacity-0 transition-all duration-700" style={{ transitionDelay: '0.2s' }}>
+            <Card className="p-6 flex items-center justify-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group bg-white">
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                  <Icon name="Factory" size={32} className="text-primary" />
+                </div>
+                <p className="text-xs font-semibold">Северсталь</p>
+              </div>
+            </Card>
+            <Card className="p-6 flex items-center justify-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group bg-white">
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                  <Icon name="Package" size={32} className="text-primary" />
+                </div>
+                <p className="text-xs font-semibold">ТМК</p>
+              </div>
+            </Card>
+            <Card className="p-6 flex items-center justify-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group bg-white">
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                  <Icon name="Boxes" size={32} className="text-primary" />
+                </div>
+                <p className="text-xs font-semibold">ЧТПЗ</p>
+              </div>
+            </Card>
+            <Card className="p-6 flex items-center justify-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group bg-white">
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                  <Icon name="Hammer" size={32} className="text-primary" />
+                </div>
+                <p className="text-xs font-semibold">УЗТМ</p>
+              </div>
+            </Card>
+            <Card className="p-6 flex items-center justify-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group bg-white">
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                  <Icon name="Wrench" size={32} className="text-primary" />
+                </div>
+                <p className="text-xs font-semibold">Уралмаш</p>
+              </div>
+            </Card>
+            <Card className="p-6 flex items-center justify-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group bg-white">
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                  <Icon name="Truck" size={32} className="text-primary" />
+                </div>
+                <p className="text-xs font-semibold">Камаз</p>
+              </div>
+            </Card>
           </div>
         </div>
       </section>
@@ -598,6 +890,40 @@ const Index = () => {
                     </span>
                   </Button>
                 </form>
+              </Card>
+            </div>
+
+            <div className="mt-12">
+              <Card className="overflow-hidden">
+                <div className="relative h-96 w-full">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2179.6861849468957!2d60.59759337671914!3d56.83826737347595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x43c16e8e8b8f8f8f%3A0x8f8f8f8f8f8f8f8f!2z0L_RgNC-0LzRi9GI0LvQtdC90L3QsNGPINGD0LvQuNGG0LAsIDEyLCDQldC60LDRgtC10YDQuNC90LHRg9GA0LM!5e0!3m2!1sru!2sru!4v1234567890123!5m2!1sru!2sru"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    className="absolute inset-0"
+                  ></iframe>
+                </div>
+                <div className="p-4 bg-white border-t">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="font-semibold">ООО "ИСК"</p>
+                      <p className="text-sm text-muted-foreground">г. Екатеринбург, ул. Промышленная, д. 12</p>
+                    </div>
+                    <a 
+                      href="https://maps.google.com/?q=56.838267,60.599593" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-accent hover:underline text-sm flex items-center space-x-1"
+                    >
+                      <span>Открыть в картах</span>
+                      <Icon name="ExternalLink" size={16} />
+                    </a>
+                  </div>
+                </div>
               </Card>
             </div>
           </div>
