@@ -105,26 +105,32 @@ const Index = () => {
             </div>
           </div>
           
-              <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-6">
             <button onClick={() => scrollToSection('services')} className="text-foreground hover:text-accent transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full">
               Услуги
             </button>
+            <button onClick={() => scrollToSection('portfolio')} className="text-foreground hover:text-accent transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full">
+              Портфолио
+            </button>
             <button onClick={() => scrollToSection('about')} className="text-foreground hover:text-accent transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full">
               О компании
+            </button>
+            <button onClick={() => scrollToSection('team')} className="text-foreground hover:text-accent transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full">
+              Команда
             </button>
             <button onClick={() => scrollToSection('contacts')} className="text-foreground hover:text-accent transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full">
               Контакты
             </button>
           </nav>
 
-          <a href="tel:+78001234567" className="hidden md:flex items-center space-x-2 text-accent font-semibold hover:scale-105 transition-transform duration-300 group">
+          <a href="tel:+79273404080" className="hidden lg:flex items-center space-x-2 text-accent font-semibold hover:scale-105 transition-transform duration-300 group">
             <div className="p-2 bg-accent/10 rounded-full group-hover:bg-accent/20 transition-colors">
               <Icon name="Phone" size={20} className="group-hover:rotate-12 transition-transform" />
             </div>
-            <span>+7 (800) 123-45-67</span>
+            <span>+7 (927) 340-40-80</span>
           </a>
 
-          <Button className="md:hidden" variant="ghost" size="icon">
+          <Button className="lg:hidden" variant="ghost" size="icon">
             <Icon name="Menu" size={24} />
           </Button>
         </div>
@@ -346,7 +352,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="py-20 px-4 bg-muted/30">
+      <section id="portfolio" className="py-20 px-4 bg-muted/30">
         <div className="container mx-auto">
           <h2 className="text-4xl font-bold text-center mb-4 animate-on-scroll opacity-0 transition-all duration-700">Реализованные проекты</h2>
           <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto animate-on-scroll opacity-0 transition-all duration-700" style={{ transitionDelay: '0.1s' }}>
@@ -548,33 +554,51 @@ const Index = () => {
                   <Icon name="FileCheck" size={28} className="mr-3 text-accent" />
                   Лицензии и сертификаты
                 </h3>
-                <div className="grid md:grid-cols-3 gap-6">
-                  <Card className="p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group border-2 border-accent/20">
-                    <div className="w-16 h-16 mx-auto bg-accent/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                      <Icon name="Shield" size={32} className="text-accent" />
+                <p className="text-muted-foreground mb-6">
+                  Здесь будут размещены сканы и фотографии оригинальных документов: свидетельства СРО, 
+                  сертификаты ISO, допуски на работы повышенной опасности, лицензии на виды деятельности.
+                </p>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <Card className="overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 group cursor-pointer">
+                    <div className="relative bg-gradient-to-br from-primary/5 to-accent/5 h-80 flex items-center justify-center border-2 border-dashed border-primary/20">
+                      <div className="text-center">
+                        <Icon name="FileText" size={64} className="mx-auto text-primary/40 mb-4 group-hover:scale-110 transition-transform" />
+                        <p className="text-primary font-semibold">Свидетельство СРО</p>
+                        <p className="text-xs text-muted-foreground mt-2">Нажмите для просмотра</p>
+                      </div>
                     </div>
-                    <h4 className="font-bold text-center mb-2">СРО</h4>
-                    <p className="text-sm text-muted-foreground text-center">
-                      Член саморегулируемой организации в области строительства
-                    </p>
+                    <div className="p-4 bg-white">
+                      <p className="text-sm font-semibold">СРО в области строительства</p>
+                      <p className="text-xs text-muted-foreground">Документ будет загружен</p>
+                    </div>
                   </Card>
-                  <Card className="p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group border-2 border-accent/20">
-                    <div className="w-16 h-16 mx-auto bg-accent/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                      <Icon name="Award" size={32} className="text-accent" />
+
+                  <Card className="overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 group cursor-pointer">
+                    <div className="relative bg-gradient-to-br from-primary/5 to-accent/5 h-80 flex items-center justify-center border-2 border-dashed border-primary/20">
+                      <div className="text-center">
+                        <Icon name="Award" size={64} className="mx-auto text-primary/40 mb-4 group-hover:scale-110 transition-transform" />
+                        <p className="text-primary font-semibold">Сертификат ISO</p>
+                        <p className="text-xs text-muted-foreground mt-2">Нажмите для просмотра</p>
+                      </div>
                     </div>
-                    <h4 className="font-bold text-center mb-2">ISO 9001</h4>
-                    <p className="text-sm text-muted-foreground text-center">
-                      Сертификат системы менеджмента качества
-                    </p>
+                    <div className="p-4 bg-white">
+                      <p className="text-sm font-semibold">ISO 9001:2015</p>
+                      <p className="text-xs text-muted-foreground">Документ будет загружен</p>
+                    </div>
                   </Card>
-                  <Card className="p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group border-2 border-accent/20">
-                    <div className="w-16 h-16 mx-auto bg-accent/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                      <Icon name="FileCheck" size={32} className="text-accent" />
+
+                  <Card className="overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 group cursor-pointer">
+                    <div className="relative bg-gradient-to-br from-primary/5 to-accent/5 h-80 flex items-center justify-center border-2 border-dashed border-primary/20">
+                      <div className="text-center">
+                        <Icon name="Shield" size={64} className="mx-auto text-primary/40 mb-4 group-hover:scale-110 transition-transform" />
+                        <p className="text-primary font-semibold">Допуски СРО</p>
+                        <p className="text-xs text-muted-foreground mt-2">Нажмите для просмотра</p>
+                      </div>
                     </div>
-                    <h4 className="font-bold text-center mb-2">Допуски</h4>
-                    <p className="text-sm text-muted-foreground text-center">
-                      Допуски на работы повышенной опасности
-                    </p>
+                    <div className="p-4 bg-white">
+                      <p className="text-sm font-semibold">Работы повышенной опасности</p>
+                      <p className="text-xs text-muted-foreground">Документ будет загружен</p>
+                    </div>
                   </Card>
                 </div>
               </div>
@@ -587,9 +611,11 @@ const Index = () => {
                 <div className="grid md:grid-cols-2 gap-4 text-muted-foreground">
                   <p><span className="font-semibold text-foreground">Юридическое название:</span> ООО "ИСК"</p>
                   <p><span className="font-semibold text-foreground">Год основания:</span> 2018</p>
-                  <p><span className="font-semibold text-foreground">Юридический адрес:</span> 620000, г. Екатеринбург, ул. Промышленная, д. 12</p>
-                  <p><span className="font-semibold text-foreground">ИНН:</span> 6658123456</p>
-                  <p><span className="font-semibold text-foreground">ОГРН:</span> 1166658012345</p>
+                  <p><span className="font-semibold text-foreground">Юридический адрес:</span> 453265, Республика Башкортостан, г. Салават, б-р Юлаева, д. 47, кв. 4</p>
+                  <p><span className="font-semibold text-foreground">Фактический адрес:</span> Республика Башкортостан, г. Стерлитамак, ул. Элеваторная, 2Вс1</p>
+                  <p><span className="font-semibold text-foreground">ИНН / КПП:</span> 0266058640 / 026601001</p>
+                  <p><span className="font-semibold text-foreground">ОГРН:</span> 1180280015673</p>
+                  <p><span className="font-semibold text-foreground">Генеральный директор:</span> Рогулин Сергей Дмитриевич</p>
                 </div>
               </div>
             </div>
@@ -659,7 +685,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="py-20 px-4 bg-white">
+      <section id="team" className="py-20 px-4 bg-white">
         <div className="container mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4 animate-on-scroll opacity-0 transition-all duration-700">Наша команда</h2>
@@ -789,8 +815,8 @@ const Index = () => {
                     </div>
                     <div>
                       <h3 className="font-semibold mb-1">Телефон</h3>
-                      <a href="tel:+78001234567" className="text-accent hover:underline">
-                        +7 (800) 123-45-67
+                      <a href="tel:+79273404080" className="text-accent hover:underline">
+                        +7 (927) 340-40-80
                       </a>
                     </div>
                   </div>
@@ -812,10 +838,10 @@ const Index = () => {
                       <Icon name="MapPin" size={24} className="text-accent group-hover:scale-125 transition-transform" />
                     </div>
                     <div>
-                      <h3 className="font-semibold mb-1">Адрес</h3>
+                      <h3 className="font-semibold mb-1">Фактический адрес</h3>
                       <p className="text-muted-foreground">
-                        620000, г. Екатеринбург,<br />
-                        ул. Промышленная, д. 12
+                        Республика Башкортостан,<br />
+                        г. Стерлитамак, ул. Элеваторная, 2Вс1
                       </p>
                     </div>
                   </div>
@@ -897,7 +923,7 @@ const Index = () => {
               <Card className="overflow-hidden">
                 <div className="relative h-96 w-full">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2179.6861849468957!2d60.59759337671914!3d56.83826737347595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x43c16e8e8b8f8f8f%3A0x8f8f8f8f8f8f8f8f!2z0L_RgNC-0LzRi9GI0LvQtdC90L3QsNGPINGD0LvQuNGG0LAsIDEyLCDQldC60LDRgtC10YDQuNC90LHRg9GA0LM!5e0!3m2!1sru!2sru!4v1234567890123!5m2!1sru!2sru"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2329.5!2d55.95!3d53.63!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTPCsDM3JzQ4LjAiTiA1NcKwNTcnMDAuMCJF!5e0!3m2!1sru!2sru!4v1234567890123!5m2!1sru!2sru"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
@@ -911,10 +937,10 @@ const Index = () => {
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="font-semibold">ООО "ИСК"</p>
-                      <p className="text-sm text-muted-foreground">г. Екатеринбург, ул. Промышленная, д. 12</p>
+                      <p className="text-sm text-muted-foreground">г. Стерлитамак, ул. Элеваторная, 2Вс1</p>
                     </div>
                     <a 
-                      href="https://maps.google.com/?q=56.838267,60.599593" 
+                      href="https://maps.google.com/?q=53.63,55.95" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="text-accent hover:underline text-sm flex items-center space-x-1"
