@@ -56,29 +56,34 @@ const Index = () => {
     <div className="min-h-screen bg-white">
       <header className="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-border z-50 animate-fade-in-down">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-primary flex items-center justify-center">
-              <span className="text-white font-bold text-lg">ИСК</span>
-            </div>
+          <div className="flex items-center space-x-3 group">
+            <img 
+              src="https://cdn.poehali.dev/files/54bbab8e-ce7f-42ef-a936-06caf8460eec.png" 
+              alt="ИСК Логотип" 
+              className="w-12 h-12 transition-transform duration-300 group-hover:scale-110"
+            />
             <div className="flex flex-col">
-              <span className="font-bold text-xl text-primary">ИСК-СТР</span>
+              <span className="font-bold text-xl text-primary">ИСК</span>
+              <span className="text-xs text-muted-foreground">Инженерно-строительная компания</span>
             </div>
           </div>
           
-          <nav className="hidden md:flex items-center space-x-8">
-            <button onClick={() => scrollToSection('services')} className="text-foreground hover:text-accent transition-colors">
+              <nav className="hidden md:flex items-center space-x-8">
+            <button onClick={() => scrollToSection('services')} className="text-foreground hover:text-accent transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full">
               Услуги
             </button>
-            <button onClick={() => scrollToSection('about')} className="text-foreground hover:text-accent transition-colors">
+            <button onClick={() => scrollToSection('about')} className="text-foreground hover:text-accent transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full">
               О компании
             </button>
-            <button onClick={() => scrollToSection('contacts')} className="text-foreground hover:text-accent transition-colors">
+            <button onClick={() => scrollToSection('contacts')} className="text-foreground hover:text-accent transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full">
               Контакты
             </button>
           </nav>
 
-          <a href="tel:+78001234567" className="hidden md:flex items-center space-x-2 text-accent font-semibold">
-            <Icon name="Phone" size={20} />
+          <a href="tel:+78001234567" className="hidden md:flex items-center space-x-2 text-accent font-semibold hover:scale-105 transition-transform duration-300 group">
+            <div className="p-2 bg-accent/10 rounded-full group-hover:bg-accent/20 transition-colors">
+              <Icon name="Phone" size={20} className="group-hover:rotate-12 transition-transform" />
+            </div>
             <span>+7 (800) 123-45-67</span>
           </a>
 
@@ -227,27 +232,86 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="about" className="py-20 px-4 bg-muted/30">
-        <div className="container mx-auto">
+      <section id="about" className="py-20 px-4 bg-muted/30 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl"></div>
+        <div className="container mx-auto relative z-10">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold mb-8 animate-on-scroll opacity-0 transition-all duration-700">О компании</h2>
+            <div className="flex items-center justify-center mb-8 animate-on-scroll opacity-0 transition-all duration-700">
+              <img 
+                src="https://cdn.poehali.dev/files/54bbab8e-ce7f-42ef-a936-06caf8460eec.png" 
+                alt="ИСК Логотип" 
+                className="w-24 h-24 mr-6 hover:scale-110 transition-transform duration-500"
+              />
+              <div>
+                <h2 className="text-4xl font-bold">ООО "ИСК"</h2>
+                <p className="text-xl text-muted-foreground mt-2">Инженерно-строительная компания</p>
+              </div>
+            </div>
             
             <div className="prose prose-lg max-w-none space-y-6 text-foreground animate-on-scroll opacity-0 transition-all duration-700" style={{ transitionDelay: '0.1s' }}>
-              <p className="leading-relaxed">
-                ИСК-СТР — компания, специализирующаяся на комплексных строительно-монтажных работах для промышленных объектов. Мы используем современные материалы и оборудование при монтаже, изготовлении узлов с применением как стальных, так и полиэтиленовых трубопроводов различных диаметров диапазоном от 25 до 1200 мм.
+              <Card className="p-6 bg-gradient-to-br from-accent/5 to-transparent border-l-4 border-l-accent">
+                <div className="flex items-start space-x-4">
+                  <div className="p-3 bg-accent/10 rounded-lg">
+                    <Icon name="Calendar" size={32} className="text-accent" />
+                  </div>
+                  <div>
+                    <p className="text-lg font-semibold mb-2">Основана в 2018 году</p>
+                    <p className="text-muted-foreground">
+                      За время своего существования показала себя как исполнительный подрядчик, выполняющий договорные обязательства с хорошим качеством работ и в установленные сроки.
+                    </p>
+                  </div>
+                </div>
+              </Card>
+
+              <div className="grid md:grid-cols-3 gap-4 my-8">
+                <Card className="p-6 text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group">
+                  <div className="w-16 h-16 mx-auto bg-accent/10 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    <Icon name="Target" size={32} className="text-accent" />
+                  </div>
+                  <h3 className="font-bold mb-2">Качество и безопасность</h3>
+                  <p className="text-sm text-muted-foreground">Особое внимание контролю и охране труда</p>
+                </Card>
+                <Card className="p-6 text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group">
+                  <div className="w-16 h-16 mx-auto bg-accent/10 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    <Icon name="Zap" size={32} className="text-accent" />
+                  </div>
+                  <h3 className="font-bold mb-2">Гибкость</h3>
+                  <p className="text-sm text-muted-foreground">Оперативность и инициативность</p>
+                </Card>
+                <Card className="p-6 text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group">
+                  <div className="w-16 h-16 mx-auto bg-accent/10 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    <Icon name="Users" size={32} className="text-accent" />
+                  </div>
+                  <h3 className="font-bold mb-2">Команда</h3>
+                  <p className="text-sm text-muted-foreground">Высококвалифицированные специалисты</p>
+                </Card>
+              </div>
+              
+              <p className="leading-relaxed text-lg">
+                Профессиональный менеджмент в области подбора кадров позволил собрать <span className="font-semibold text-accent">команду высококвалифицированных специалистов</span>, которые решают поставленные задачи любой сложности.
               </p>
               
-              <p className="leading-relaxed">
-                Наш обученный высококвалифицированный персонал и аттестованное оборудование позволяют выполнять работы любой сложности. Мы обладаем огромным опытом по прокладке подземных коммуникаций, что является важной составляющей оборудования различных инженерных сооружений.
-              </p>
-              
-              <p className="leading-relaxed">
-                К технологическим трубопроводам предъявляются повышенные требования при их изготовлении и монтаже, так как по ним могут транспортироваться опасные для здоровья и жизни обслуживающего персонала взрывоопасные, ядовитые и горючие вещества. Мы строго соблюдаем все нормы безопасности и технологические регламенты.
+              <p className="leading-relaxed text-lg">
+                <span className="font-semibold text-primary">Открытость и прозрачность в ценообразовании</span> позволяет Заказчику участвовать в оптимизации стоимости строительства. За время своей работы компания наладила постоянные контакты с множеством производителей и поставщиков строительных материалов и оборудования.
               </p>
 
-              <div className="bg-white p-6 rounded-lg border border-border mt-8">
-                <h3 className="font-bold text-xl mb-4 text-primary">Контактная информация</h3>
-                <div className="space-y-2 text-muted-foreground">
+              <Card className="p-6 bg-primary/5 border-primary/20">
+                <div className="flex items-start space-x-4">
+                  <Icon name="TrendingUp" size={40} className="text-primary flex-shrink-0" />
+                  <p className="text-lg italic">
+                    "Для нас важен каждый заказчик, нуждающийся в наших услугах. Компания может выполнять в короткие сроки задачи в сфере строительства любой сложности."
+                  </p>
+                </div>
+              </Card>
+
+              <div className="bg-white p-8 rounded-lg border-2 border-primary/20 mt-8 hover:shadow-xl transition-shadow duration-300">
+                <h3 className="font-bold text-2xl mb-6 text-primary flex items-center">
+                  <Icon name="Building2" size={28} className="mr-3" />
+                  Контактная информация
+                </h3>
+                <div className="grid md:grid-cols-2 gap-4 text-muted-foreground">
+                  <p><span className="font-semibold text-foreground">Юридическое название:</span> ООО "ИСК"</p>
+                  <p><span className="font-semibold text-foreground">Год основания:</span> 2018</p>
                   <p><span className="font-semibold text-foreground">Юридический адрес:</span> 620000, г. Екатеринбург, ул. Промышленная, д. 12</p>
                   <p><span className="font-semibold text-foreground">ИНН:</span> 6658123456</p>
                   <p><span className="font-semibold text-foreground">ОГРН:</span> 1166658012345</p>
@@ -269,9 +333,9 @@ const Index = () => {
             <div className="grid md:grid-cols-2 gap-12 mb-12">
               <div>
                 <div className="space-y-6">
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Icon name="Phone" size={24} className="text-accent" />
+                  <div className="flex items-start space-x-4 group hover:bg-accent/5 p-4 rounded-lg transition-all duration-300">
+                    <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:bg-accent/20 transition-all">
+                      <Icon name="Phone" size={24} className="text-accent group-hover:rotate-12 transition-transform" />
                     </div>
                     <div>
                       <h3 className="font-semibold mb-1">Телефон</h3>
@@ -281,9 +345,9 @@ const Index = () => {
                     </div>
                   </div>
 
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Icon name="Mail" size={24} className="text-accent" />
+                  <div className="flex items-start space-x-4 group hover:bg-accent/5 p-4 rounded-lg transition-all duration-300">
+                    <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:bg-accent/20 transition-all">
+                      <Icon name="Mail" size={24} className="text-accent group-hover:-rotate-12 transition-transform" />
                     </div>
                     <div>
                       <h3 className="font-semibold mb-1">Email</h3>
@@ -293,9 +357,9 @@ const Index = () => {
                     </div>
                   </div>
 
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Icon name="MapPin" size={24} className="text-accent" />
+                  <div className="flex items-start space-x-4 group hover:bg-accent/5 p-4 rounded-lg transition-all duration-300">
+                    <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:bg-accent/20 transition-all">
+                      <Icon name="MapPin" size={24} className="text-accent group-hover:scale-125 transition-transform" />
                     </div>
                     <div>
                       <h3 className="font-semibold mb-1">Адрес</h3>
@@ -306,9 +370,9 @@ const Index = () => {
                     </div>
                   </div>
 
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Icon name="Clock" size={24} className="text-accent" />
+                  <div className="flex items-start space-x-4 group hover:bg-accent/5 p-4 rounded-lg transition-all duration-300">
+                    <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:bg-accent/20 transition-all">
+                      <Icon name="Clock" size={24} className="text-accent group-hover:rotate-45 transition-transform" />
                     </div>
                     <div>
                       <h3 className="font-semibold mb-1">Режим работы</h3>
@@ -321,8 +385,11 @@ const Index = () => {
                 </div>
               </div>
 
-              <Card className="p-6">
-                <h3 className="font-bold text-xl mb-6">Форма обратной связи</h3>
+              <Card className="p-6 border-2 border-primary/10 hover:border-primary/30 transition-colors duration-300">
+                <h3 className="font-bold text-xl mb-6 flex items-center">
+                  <Icon name="Send" size={24} className="mr-2 text-accent" />
+                  Форма обратной связи
+                </h3>
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
                     <Input
@@ -365,8 +432,12 @@ const Index = () => {
                       required
                     />
                   </div>
-                  <Button type="submit" className="w-full bg-accent hover:bg-accent/90">
-                    Отправить заявку
+                  <Button type="submit" className="w-full bg-accent hover:bg-accent/90 group relative overflow-hidden">
+                    <span className="absolute inset-0 bg-white/20 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
+                    <span className="relative flex items-center justify-center">
+                      Отправить заявку
+                      <Icon name="ArrowRight" className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
+                    </span>
                   </Button>
                 </form>
               </Card>
@@ -375,15 +446,21 @@ const Index = () => {
         </div>
       </section>
 
-      <footer className="bg-primary text-white py-12 px-4">
-        <div className="container mx-auto">
+      <footer className="bg-primary text-white py-12 px-4 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+        <div className="container mx-auto relative z-10">
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="w-10 h-10 bg-white flex items-center justify-center">
-                  <span className="text-primary font-bold text-lg">ИСК</span>
+              <div className="flex items-center space-x-3 mb-4 group">
+                <img 
+                  src="https://cdn.poehali.dev/files/54bbab8e-ce7f-42ef-a936-06caf8460eec.png" 
+                  alt="ИСК Логотип" 
+                  className="w-12 h-12 transition-transform duration-300 group-hover:scale-110 brightness-0 invert"
+                />
+                <div>
+                  <span className="font-bold text-xl">ИСК</span>
+                  <p className="text-xs text-white/60">Инженерно-строительная компания</p>
                 </div>
-                <span className="font-bold text-xl">ИСК-СТР</span>
               </div>
               <p className="text-white/80">
                 Комплексные строительно-монтажные работы для промышленных объектов
@@ -393,11 +470,26 @@ const Index = () => {
             <div>
               <h4 className="font-bold mb-4">Услуги</h4>
               <ul className="space-y-2 text-white/80">
-                <li>Монтаж трубопроводов</li>
-                <li>Металлоконструкции</li>
-                <li>Железобетонные конструкции</li>
-                <li>Земляные работы</li>
-                <li>Общестроительные работы</li>
+                <li className="hover:text-white hover:translate-x-1 transition-all duration-200 cursor-pointer flex items-center">
+                  <Icon name="ChevronRight" size={16} className="mr-1" />
+                  Монтаж трубопроводов
+                </li>
+                <li className="hover:text-white hover:translate-x-1 transition-all duration-200 cursor-pointer flex items-center">
+                  <Icon name="ChevronRight" size={16} className="mr-1" />
+                  Металлоконструкции
+                </li>
+                <li className="hover:text-white hover:translate-x-1 transition-all duration-200 cursor-pointer flex items-center">
+                  <Icon name="ChevronRight" size={16} className="mr-1" />
+                  Железобетонные конструкции
+                </li>
+                <li className="hover:text-white hover:translate-x-1 transition-all duration-200 cursor-pointer flex items-center">
+                  <Icon name="ChevronRight" size={16} className="mr-1" />
+                  Земляные работы
+                </li>
+                <li className="hover:text-white hover:translate-x-1 transition-all duration-200 cursor-pointer flex items-center">
+                  <Icon name="ChevronRight" size={16} className="mr-1" />
+                  Общестроительные работы
+                </li>
               </ul>
             </div>
 
@@ -419,8 +511,9 @@ const Index = () => {
             </div>
           </div>
 
-          <div className="border-t border-white/20 pt-8 text-center text-white/60">
-            <p>© 2025 ИСК-СТР. Все права защищены.</p>
+          <div className="border-t border-white/20 pt-8 text-center">
+            <p className="text-white/60 hover:text-white/80 transition-colors">© 2025 ООО "ИСК". Все права защищены.</p>
+            <p className="text-white/40 text-sm mt-2">Инженерно-строительная компания • Основана в 2018 году</p>
           </div>
         </div>
       </footer>
