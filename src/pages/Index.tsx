@@ -21,9 +21,12 @@ const Index = () => {
     setFormData({ name: "", phone: "", topic: "", message: "" });
   };
 
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     element?.scrollIntoView({ behavior: "smooth" });
+    setIsMobileMenuOpen(false);
   };
 
   const [isVisible, setIsVisible] = useState(false);
@@ -130,9 +133,41 @@ const Index = () => {
             <span>+7 (927) 340-40-80</span>
           </a>
 
-          <Button className="lg:hidden" variant="ghost" size="icon">
-            <Icon name="Menu" size={24} />
+          <Button 
+            className="lg:hidden" 
+            variant="ghost" 
+            size="icon"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            <Icon name={isMobileMenuOpen ? "X" : "Menu"} size={24} />
           </Button>
+        </div>
+
+        {isMobileMenuOpen && (
+          <div className="lg:hidden bg-white border-t border-border animate-fade-in">
+            <nav className="container mx-auto px-4 py-4 flex flex-col space-y-3">
+              <button onClick={() => scrollToSection('services')} className="text-left py-2 text-foreground hover:text-accent transition-colors">
+                Услуги
+              </button>
+              <button onClick={() => scrollToSection('portfolio')} className="text-left py-2 text-foreground hover:text-accent transition-colors">
+                Портфолио
+              </button>
+              <button onClick={() => scrollToSection('about')} className="text-left py-2 text-foreground hover:text-accent transition-colors">
+                О компании
+              </button>
+              <button onClick={() => scrollToSection('team')} className="text-left py-2 text-foreground hover:text-accent transition-colors">
+                Команда
+              </button>
+              <button onClick={() => scrollToSection('contacts')} className="text-left py-2 text-foreground hover:text-accent transition-colors">
+                Контакты
+              </button>
+              <a href="tel:+79273404080" className="flex items-center space-x-2 py-2 text-accent font-semibold">
+                <Icon name="Phone" size={20} />
+                <span>+7 (927) 340-40-80</span>
+              </a>
+            </nav>
+          </div>
+        )}
         </div>
       </header>
 
@@ -143,21 +178,24 @@ const Index = () => {
         </div>
         <div className="container mx-auto relative z-10">
           <div className="max-w-4xl">
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight animate-fade-in-up">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-6 leading-tight animate-fade-in-up">
               Комплексные строительно-монтажные работы
             </h1>
-            <p className="text-xl text-white/90 mb-8 leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+            <p className="text-base sm:text-xl text-white/90 mb-8 leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
               Монтаж технологических трубопроводов • Металлоконструкции • Железобетонные конструкции • Земляные работы • Общестроительные работы
             </p>
             <Button 
               size="lg" 
-              className="bg-accent hover:bg-accent/90 text-white font-semibold px-8 py-6 text-lg animate-fade-in-up relative overflow-hidden group"
+              className="bg-accent hover:bg-accent/90 text-white font-semibold px-4 sm:px-8 py-4 sm:py-6 text-sm sm:text-lg animate-fade-in-up relative overflow-hidden group w-full sm:w-auto"
               style={{ animationDelay: '0.4s' }}
               onClick={() => scrollToSection('contacts')}
             >
-              Получить коммерческое предложение
+              <span className="relative flex items-center justify-center">
+                Получить КП
+                <span className="hidden sm:inline ml-1">коммерческое предложение</span>
+                <Icon name="ArrowRight" className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
+              </span>
               <span className="absolute inset-0 bg-white/20 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out"></span>
-              <Icon name="ArrowRight" className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
             </Button>
           </div>
         </div>
@@ -636,10 +674,10 @@ const Index = () => {
           </div>
 
           <div className="relative overflow-hidden py-8">
-            <div className="flex space-x-8 animate-marquee">
+            <div className="flex space-x-4 sm:space-x-8 animate-marquee hover:pause-animation">
               {[...Array(2)].map((_, setIndex) => (
-                <div key={setIndex} className="flex space-x-8 shrink-0">
-                  <Card className="p-8 flex items-center justify-center bg-white hover:shadow-xl transition-all duration-300 hover:scale-105 group min-w-[280px] h-40">
+                <div key={setIndex} className="flex space-x-4 sm:space-x-8 shrink-0">
+                  <Card className="p-3 sm:p-8 flex items-center justify-center bg-white hover:shadow-xl transition-all duration-300 hover:scale-105 group min-w-[140px] sm:min-w-[280px] h-20 sm:h-40">
                     <img 
                       src="https://cdn.poehali.dev/projects/9904a683-686d-4561-9edc-49b801b00e0e/files/f50062e9-751f-4bb3-9ce0-b218dd185f6b.jpg"
                       alt="MetalStroy"
@@ -647,7 +685,7 @@ const Index = () => {
                     />
                   </Card>
 
-                  <Card className="p-8 flex items-center justify-center bg-white hover:shadow-xl transition-all duration-300 hover:scale-105 group min-w-[280px] h-40">
+                  <Card className="p-3 sm:p-8 flex items-center justify-center bg-white hover:shadow-xl transition-all duration-300 hover:scale-105 group min-w-[140px] sm:min-w-[280px] h-20 sm:h-40">
                     <img 
                       src="https://cdn.poehali.dev/projects/9904a683-686d-4561-9edc-49b801b00e0e/files/1f1cd42b-f229-44be-b26f-1af406252f76.jpg"
                       alt="UralProm"
@@ -655,7 +693,7 @@ const Index = () => {
                     />
                   </Card>
 
-                  <Card className="p-8 flex items-center justify-center bg-white hover:shadow-xl transition-all duration-300 hover:scale-105 group min-w-[280px] h-40">
+                  <Card className="p-3 sm:p-8 flex items-center justify-center bg-white hover:shadow-xl transition-all duration-300 hover:scale-105 group min-w-[140px] sm:min-w-[280px] h-20 sm:h-40">
                     <img 
                       src="https://cdn.poehali.dev/projects/9904a683-686d-4561-9edc-49b801b00e0e/files/626a6068-0e4d-4532-bc8d-1a4e62df88db.jpg"
                       alt="TechSteel"
@@ -663,7 +701,7 @@ const Index = () => {
                     />
                   </Card>
 
-                  <Card className="p-8 flex items-center justify-center bg-white hover:shadow-xl transition-all duration-300 hover:scale-105 group min-w-[280px] h-40">
+                  <Card className="p-3 sm:p-8 flex items-center justify-center bg-white hover:shadow-xl transition-all duration-300 hover:scale-105 group min-w-[140px] sm:min-w-[280px] h-20 sm:h-40">
                     <img 
                       src="https://cdn.poehali.dev/projects/9904a683-686d-4561-9edc-49b801b00e0e/files/2c0b05e5-2592-4b7e-a2e2-41c81ebd41d8.jpg"
                       alt="StroyKomplekt"
@@ -671,7 +709,7 @@ const Index = () => {
                     />
                   </Card>
 
-                  <Card className="p-8 flex items-center justify-center bg-white hover:shadow-xl transition-all duration-300 hover:scale-105 group min-w-[280px] h-40">
+                  <Card className="p-3 sm:p-8 flex items-center justify-center bg-white hover:shadow-xl transition-all duration-300 hover:scale-105 group min-w-[140px] sm:min-w-[280px] h-20 sm:h-40">
                     <img 
                       src="https://cdn.poehali.dev/projects/9904a683-686d-4561-9edc-49b801b00e0e/files/ea1a8e10-6fda-4e64-9cb6-ef0857d78390.jpg"
                       alt="Zavod-Montazh"
@@ -679,7 +717,7 @@ const Index = () => {
                     />
                   </Card>
 
-                  <Card className="p-8 flex items-center justify-center bg-white hover:shadow-xl transition-all duration-300 hover:scale-105 group min-w-[280px] h-40">
+                  <Card className="p-3 sm:p-8 flex items-center justify-center bg-white hover:shadow-xl transition-all duration-300 hover:scale-105 group min-w-[140px] sm:min-w-[280px] h-20 sm:h-40">
                     <img 
                       src="https://cdn.poehali.dev/projects/9904a683-686d-4561-9edc-49b801b00e0e/files/4eb973ed-c235-4651-89b8-6fabac768135.jpg"
                       alt="BashIndustry"
@@ -779,29 +817,29 @@ const Index = () => {
           </div>
 
           <div className="mt-16 max-w-4xl mx-auto">
-            <Card className="p-8 bg-gradient-to-br from-primary/5 to-accent/5 border-2 border-primary/10">
-              <div className="flex items-start space-x-4">
-                <div className="p-4 bg-accent/10 rounded-lg">
+            <Card className="p-4 sm:p-8 bg-gradient-to-br from-primary/5 to-accent/5 border-2 border-primary/10">
+              <div className="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4">
+                <div className="p-4 bg-accent/10 rounded-lg shrink-0">
                   <Icon name="Users" size={40} className="text-accent" />
                 </div>
-                <div>
-                  <h3 className="font-bold text-2xl mb-3">Присоединяйтесь к нашей команде</h3>
-                  <p className="text-muted-foreground leading-relaxed mb-4">
+                <div className="flex-1">
+                  <h3 className="font-bold text-xl sm:text-2xl mb-3">Присоединяйтесь к нашей команде</h3>
+                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-4">
                     Мы постоянно ищем талантливых специалистов: прорабов, мастеров участков, инженеров ПТО, 
                     сварщиков, монтажников, машинистов спецтехники. Предлагаем достойную заработную плату, 
                     официальное трудоустройство и возможность профессионального роста.
                   </p>
-                  <div className="flex flex-wrap gap-3">
+                  <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3">
                     <div className="flex items-center space-x-2 text-sm">
-                      <Icon name="Check" size={16} className="text-accent" />
+                      <Icon name="Check" size={16} className="text-accent shrink-0" />
                       <span>Официальное трудоустройство</span>
                     </div>
                     <div className="flex items-center space-x-2 text-sm">
-                      <Icon name="Check" size={16} className="text-accent" />
+                      <Icon name="Check" size={16} className="text-accent shrink-0" />
                       <span>Достойная оплата</span>
                     </div>
                     <div className="flex items-center space-x-2 text-sm">
-                      <Icon name="Check" size={16} className="text-accent" />
+                      <Icon name="Check" size={16} className="text-accent shrink-0" />
                       <span>Карьерный рост</span>
                     </div>
                   </div>
@@ -949,17 +987,17 @@ const Index = () => {
                 </div>
                 <div className="p-4 bg-white border-t">
                   <div className="flex items-center justify-between">
-                    <div>
+                    <div className="flex-1">
                       <p className="font-semibold">ООО "ИСК"</p>
-                      <p className="text-sm text-muted-foreground">г. Стерлитамак, ул. Элеваторная, 2Вс1</p>
+                      <p className="text-xs sm:text-sm text-muted-foreground">г. Стерлитамак, ул. Элеваторная, 2Вс1</p>
                     </div>
                     <a 
                       href="https://maps.google.com/?q=53.63,55.95" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="text-accent hover:underline text-sm flex items-center space-x-1"
+                      className="text-accent hover:underline text-xs sm:text-sm flex items-center space-x-1 shrink-0"
                     >
-                      <span>Открыть в картах</span>
+                      <span>Открыть</span>
                       <Icon name="ExternalLink" size={16} />
                     </a>
                   </div>
@@ -1019,18 +1057,27 @@ const Index = () => {
 
             <div>
               <h4 className="font-bold mb-4">Контакты</h4>
-              <ul className="space-y-2 text-white/80">
-                <li>
-                  <a href="tel:+78001234567" className="hover:text-accent transition-colors">
-                    +7 (800) 123-45-67
+              <ul className="space-y-3 text-white/80">
+                <li className="flex items-start space-x-2">
+                  <Icon name="Phone" size={18} className="text-accent shrink-0 mt-0.5" />
+                  <a href="tel:+79273404080" className="hover:text-accent transition-colors">
+                    +7 (927) 340-40-80
                   </a>
                 </li>
-                <li>
+                <li className="flex items-start space-x-2">
+                  <Icon name="Mail" size={18} className="text-accent shrink-0 mt-0.5" />
                   <a href="mailto:info@isk-str.ru" className="hover:text-accent transition-colors">
                     info@isk-str.ru
                   </a>
                 </li>
-                <li>г. Екатеринбург, ул. Промышленная, д. 12</li>
+                <li className="flex items-start space-x-2">
+                  <Icon name="MapPin" size={18} className="text-accent shrink-0 mt-0.5" />
+                  <span>Республика Башкортостан,<br />г. Стерлитамак, ул. Элеваторная, 2Вс1</span>
+                </li>
+                <li className="flex items-start space-x-2">
+                  <Icon name="Clock" size={18} className="text-accent shrink-0 mt-0.5" />
+                  <span>Пн-Пт: 9:00 - 18:00</span>
+                </li>
               </ul>
             </div>
           </div>
