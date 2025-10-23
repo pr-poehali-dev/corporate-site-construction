@@ -168,7 +168,6 @@ const Index = () => {
             </nav>
           </div>
         )}
-        </div>
       </header>
 
       <section className="pt-32 pb-20 px-4 bg-gradient-to-br from-primary via-primary to-secondary relative overflow-hidden">
