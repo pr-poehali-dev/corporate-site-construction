@@ -17,6 +17,10 @@ const Index = () => {
     message: ""
   });
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast.success("Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.");

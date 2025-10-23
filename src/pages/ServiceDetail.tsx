@@ -3,6 +3,7 @@ import { Card } from "@/components/ui/card";
 import Icon from "@/components/ui/icon";
 import { useParams, useNavigate } from "react-router-dom";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { useEffect } from "react";
 
 interface Service {
   id: string;
@@ -454,6 +455,10 @@ const ServiceDetail = () => {
   const navigate = useNavigate();
   const service = serviceId ? services[serviceId] : null;
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [serviceId]);
+
   if (!service) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -496,33 +501,33 @@ const ServiceDetail = () => {
         </div>
       </header>
 
-      <div className="pt-24">
+      <div className="pt-20 md:pt-24">
         <div 
-          className="relative h-[400px] bg-cover bg-center"
+          className="relative h-[300px] md:h-[400px] bg-cover bg-center"
           style={{ backgroundImage: `url(${service.image})` }}
         >
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30"></div>
-          <div className="container mx-auto px-4 h-full flex flex-col justify-end pb-12 relative z-10">
-            <div className="flex items-center space-x-3 mb-4">
-              <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center">
-                <Icon name={service.icon as any} size={32} className="text-primary" />
+          <div className="container mx-auto px-4 h-full flex flex-col justify-end pb-8 md:pb-12 relative z-10">
+            <div className="flex flex-col md:flex-row md:items-center space-y-3 md:space-y-0 md:space-x-3">
+              <div className="w-12 h-12 md:w-16 md:h-16 bg-white rounded-xl flex items-center justify-center">
+                <Icon name={service.icon as any} size={28} className="text-primary md:w-8 md:h-8" />
               </div>
               <div>
-                <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">{service.title}</h1>
-                <p className="text-white/90 text-lg">{service.subtitle}</p>
+                <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-1 md:mb-2">{service.title}</h1>
+                <p className="text-white/90 text-sm md:text-lg">{service.subtitle}</p>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="container mx-auto px-4 py-16">
-          <div className="grid lg:grid-cols-3 gap-8">
-            <div className="lg:col-span-2 space-y-12">
+        <div className="container mx-auto px-4 py-8 md:py-16">
+          <div className="grid lg:grid-cols-3 gap-6 md:gap-8">
+            <div className="lg:col-span-2 space-y-8 md:space-y-12">
               <section>
-                <h2 className="text-3xl font-bold mb-6">Описание услуги</h2>
+                <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6">Описание услуги</h2>
                 <div className="space-y-4">
                   {service.description.map((paragraph, index) => (
-                    <p key={index} className="text-muted-foreground leading-relaxed text-lg">
+                    <p key={index} className="text-muted-foreground leading-relaxed text-base md:text-lg">
                       {paragraph}
                     </p>
                   ))}
@@ -530,7 +535,7 @@ const ServiceDetail = () => {
               </section>
 
               <section>
-                <h2 className="text-3xl font-bold mb-6">Этапы выполнения работ</h2>
+                <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6">Этапы выполнения работ</h2>
                 <div className="space-y-4">
                   {service.stages.map((stage, index) => (
                     <Card key={index} className="p-6">
@@ -549,13 +554,13 @@ const ServiceDetail = () => {
               </section>
 
               <section>
-                <h2 className="text-3xl font-bold mb-6">Используемые материалы и оборудование</h2>
+                <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6">Используемые материалы и оборудование</h2>
                 <Card className="p-6">
                   <ul className="space-y-3">
                     {service.materials.map((material, index) => (
-                      <li key={index} className="flex items-start space-x-3">
-                        <Icon name="Check" size={20} className="text-accent flex-shrink-0 mt-0.5" />
-                        <span className="text-muted-foreground">{material}</span>
+                      <li key={index} className="flex items-start space-x-2 md:space-x-3">
+                        <Icon name="Check" size={18} className="text-accent flex-shrink-0 mt-0.5 md:w-5 md:h-5" />
+                        <span className="text-muted-foreground text-sm md:text-base">{material}</span>
                       </li>
                     ))}
                   </ul>
@@ -563,7 +568,7 @@ const ServiceDetail = () => {
               </section>
 
               <section>
-                <h2 className="text-3xl font-bold mb-6">Нормативная база</h2>
+                <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6">Нормативная база</h2>
                 <Card className="p-6">
                   <ul className="space-y-3">
                     {service.standards.map((standard, index) => (
@@ -578,10 +583,10 @@ const ServiceDetail = () => {
 
               {service.gallery.length > 0 && (
                 <section>
-                  <h2 className="text-3xl font-bold mb-6">Фотогалерея работ</h2>
-                  <div className="grid md:grid-cols-2 gap-4">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6">Фотогалерея работ</h2>
+                  <div className="grid md:grid-cols-2 gap-3 md:gap-4">
                     {service.gallery.map((image, index) => (
-                      <div key={index} className="relative h-64 rounded-xl overflow-hidden group">
+                      <div key={index} className="relative h-48 md:h-64 rounded-xl overflow-hidden group">
                         <img 
                           src={image} 
                           alt={`Фото работ ${index + 1}`}
@@ -594,8 +599,8 @@ const ServiceDetail = () => {
               )}
 
               <section>
-                <h2 className="text-3xl font-bold mb-6">Типовые объекты применения</h2>
-                <div className="grid sm:grid-cols-2 gap-4">
+                <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6">Типовые объекты применения</h2>
+                <div className="grid sm:grid-cols-2 gap-3 md:gap-4">
                   {service.applications.map((app, index) => (
                     <Card key={index} className="p-4 hover:shadow-lg transition-shadow">
                       <div className="flex items-center space-x-3">
@@ -610,11 +615,11 @@ const ServiceDetail = () => {
               </section>
 
               <section>
-                <h2 className="text-3xl font-bold mb-6">Часто задаваемые вопросы</h2>
-                <Accordion type="single" collapsible className="space-y-4">
+                <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6">Часто задаваемые вопросы</h2>
+                <Accordion type="single" collapsible className="space-y-3 md:space-y-4">
                   {service.faq.map((item, index) => (
-                    <AccordionItem key={index} value={`item-${index}`} className="border rounded-lg px-6">
-                      <AccordionTrigger className="text-left font-semibold">
+                    <AccordionItem key={index} value={`item-${index}`} className="border rounded-lg px-4 md:px-6">
+                      <AccordionTrigger className="text-left font-semibold text-sm md:text-base">
                         {item.question}
                       </AccordionTrigger>
                       <AccordionContent className="text-muted-foreground">
@@ -627,10 +632,10 @@ const ServiceDetail = () => {
             </div>
 
             <div className="lg:col-span-1">
-              <div className="sticky top-24 space-y-6">
-                <Card className="p-6 bg-gradient-to-br from-primary to-secondary text-white">
-                  <h3 className="text-2xl font-bold mb-4">Получить консультацию</h3>
-                  <p className="mb-6 text-white/90">
+              <div className="lg:sticky lg:top-24 space-y-4 md:space-y-6">
+                <Card className="p-5 md:p-6 bg-gradient-to-br from-primary to-secondary text-white">
+                  <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">Получить консультацию</h3>
+                  <p className="mb-4 md:mb-6 text-white/90 text-sm md:text-base">
                     Оставьте заявку, и наш специалист свяжется с вами для обсуждения проекта
                   </p>
                   <Button 
@@ -642,8 +647,8 @@ const ServiceDetail = () => {
                   </Button>
                 </Card>
 
-                <Card className="p-6">
-                  <h3 className="font-bold text-xl mb-4">Контакты</h3>
+                <Card className="p-5 md:p-6">
+                  <h3 className="font-bold text-lg md:text-xl mb-3 md:mb-4">Контакты</h3>
                   <div className="space-y-4">
                     <div className="flex items-start space-x-3">
                       <Icon name="Phone" size={20} className="text-accent flex-shrink-0 mt-1" />
@@ -673,8 +678,8 @@ const ServiceDetail = () => {
                   </div>
                 </Card>
 
-                <Card className="p-6 bg-accent/5">
-                  <h3 className="font-bold mb-3">Другие услуги</h3>
+                <Card className="p-5 md:p-6 bg-accent/5">
+                  <h3 className="font-bold mb-3 text-base md:text-lg">Другие услуги</h3>
                   <div className="space-y-2">
                     {Object.values(services)
                       .filter(s => s.id !== service.id)
