@@ -6,8 +6,10 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import Icon from "@/components/ui/icon";
 import { useState, useEffect, useRef } from "react";
 import { toast } from "sonner";
+import { useNavigate } from "react-router-dom";
 
 const Index = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -286,7 +288,10 @@ const Index = () => {
           </p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 animate-on-scroll opacity-0 transition-all duration-700" style={{ transitionDelay: '0.2s' }}>
-            <Card className="p-0 hover:shadow-xl transition-all duration-500 hover:border-accent hover:-translate-y-2 group relative overflow-hidden">
+            <Card 
+              className="p-0 hover:shadow-xl transition-all duration-500 hover:border-accent hover:-translate-y-2 group relative overflow-hidden cursor-pointer"
+              onClick={() => navigate('/services/tehnologicheskie-truboprovody')}
+            >
               <div className="relative h-48 overflow-hidden">
                 <img 
                   src="https://cdn.poehali.dev/projects/9904a683-686d-4561-9edc-49b801b00e0e/files/a8163113-1f50-4d0d-a7ae-0430d19991dc.jpg" 
@@ -306,7 +311,10 @@ const Index = () => {
               </div>
             </Card>
 
-            <Card className="p-0 hover:shadow-xl transition-all duration-500 hover:border-accent hover:-translate-y-2 group relative overflow-hidden">
+            <Card 
+              className="p-0 hover:shadow-xl transition-all duration-500 hover:border-accent hover:-translate-y-2 group relative overflow-hidden cursor-pointer"
+              onClick={() => navigate('/services/metallokonstrukcii')}
+            >
               <div className="relative h-48 overflow-hidden">
                 <img 
                   src="https://cdn.poehali.dev/projects/9904a683-686d-4561-9edc-49b801b00e0e/files/4edbd683-1238-4924-86b6-bb3411b858c2.jpg" 
@@ -326,7 +334,10 @@ const Index = () => {
               </div>
             </Card>
 
-            <Card className="p-0 hover:shadow-xl transition-all duration-500 hover:border-accent hover:-translate-y-2 group relative overflow-hidden">
+            <Card 
+              className="p-0 hover:shadow-xl transition-all duration-500 hover:border-accent hover:-translate-y-2 group relative overflow-hidden cursor-pointer"
+              onClick={() => navigate('/services/zhelezobeton')}
+            >
               <div className="relative h-48 overflow-hidden">
                 <img 
                   src="https://cdn.poehali.dev/projects/9904a683-686d-4561-9edc-49b801b00e0e/files/cd535f40-02ac-42dc-94c8-8a05eb4c867e.jpg" 
@@ -346,7 +357,10 @@ const Index = () => {
               </div>
             </Card>
 
-            <Card className="p-0 hover:shadow-xl transition-all duration-500 hover:border-accent hover:-translate-y-2 group relative overflow-hidden">
+            <Card 
+              className="p-0 hover:shadow-xl transition-all duration-500 hover:border-accent hover:-translate-y-2 group relative overflow-hidden cursor-pointer"
+              onClick={() => navigate('/services/zemlyanye-raboty')}
+            >
               <div className="relative h-48 overflow-hidden">
                 <img 
                   src="https://cdn.poehali.dev/projects/9904a683-686d-4561-9edc-49b801b00e0e/files/c6f66008-90cf-4967-bd5b-931439b60ae7.jpg" 
@@ -366,7 +380,10 @@ const Index = () => {
               </div>
             </Card>
 
-            <Card className="p-0 hover:shadow-xl transition-all duration-500 hover:border-accent hover:-translate-y-2 group relative overflow-hidden">
+            <Card 
+              className="p-0 hover:shadow-xl transition-all duration-500 hover:border-accent hover:-translate-y-2 group relative overflow-hidden cursor-pointer"
+              onClick={() => navigate('/services/obschestroitelnye-raboty')}
+            >
               <div className="relative h-48 overflow-hidden">
                 <img 
                   src="https://cdn.poehali.dev/projects/9904a683-686d-4561-9edc-49b801b00e0e/files/6e04386c-806b-40be-96de-87940df29aed.jpg" 
@@ -435,7 +452,10 @@ const Index = () => {
               </div>
             </Card>
 
-            <Card className="overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group">
+            <Card 
+              className="overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group cursor-pointer"
+              onClick={() => navigate('/projects/khpz')}
+            >
               <div className="relative h-64 overflow-hidden">
                 <img 
                   src="https://cdn.poehali.dev/projects/9904a683-686d-4561-9edc-49b801b00e0e/files/02baf658-6fc0-4a36-998c-b5c0c65779a1.jpg" 
@@ -473,7 +493,10 @@ const Index = () => {
               </div>
             </Card>
 
-            <Card className="overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group">
+            <Card 
+              className="overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group cursor-pointer"
+              onClick={() => navigate('/projects/logistics')}
+            >
               <div className="relative h-64 overflow-hidden">
                 <img 
                   src="https://cdn.poehali.dev/projects/9904a683-686d-4561-9edc-49b801b00e0e/files/036ee138-1035-4ca8-b4d8-b91c9b292667.jpg" 
